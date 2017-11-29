@@ -48,6 +48,7 @@ public class GirlController {
     //通过id查询一个女生
     @GetMapping(value = "/girls/{id}")
     public Girl girlFindOne(@PathVariable("id") Integer id){
+        //通过id查询
         return girlRepository.findOne(id);
     }
 
