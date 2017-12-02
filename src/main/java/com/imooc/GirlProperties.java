@@ -4,7 +4,7 @@ package com.imooc;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.stereotype.Component;
 
-//获取前缀是girl的配置
+//获取前缀是girl的配置  获取yml配置
 //把girl下面的那些属性都映射过来
 @Component
 @ConfigurationProperties(prefix = "girl")

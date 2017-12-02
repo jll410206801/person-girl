@@ -5,11 +5,13 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 
+
+//这个类对应数据库中的表
 @Entity
 public class Girl {
 
     @Id
-    @GeneratedValue
+    @GeneratedValue  //id一般用作自增
     private Integer id;
 
     private String cupSize;

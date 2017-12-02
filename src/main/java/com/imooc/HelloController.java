@@ -1,9 +1,7 @@
 package com.imooc;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 /**
  *启动应用的方式很多
@@ -30,8 +28,9 @@ public class HelloController {
 
 //    @RequestMapping(value = {"/hello","/hi"},method = RequestMethod.GET)
 //    @RequestMapping(value = "/say",method = RequestMethod.GET)
-    @GetMapping(value = "/say")
-    public String say(@RequestParam(value = "id",required = false,defaultValue = "0") Integer myId){
+    @PostMapping(value = "/say")
+//    public String say(@RequestParam(value = "id",required = false,defaultValue = "0") Integer myId){
+    public String say(@PathVariable("id") Integer myId){
         return "id: " + myId;
 //        return girlProperties.getCupSize();
     }
