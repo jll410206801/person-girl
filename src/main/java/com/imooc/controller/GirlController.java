@@ -6,6 +6,7 @@ import com.imooc.repository.GirlRepository;
 import com.imooc.service.GirlService;
 import com.imooc.domain.Girl;
 import com.imooc.utils.ResultUtil;
+import io.swagger.annotations.*;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,6 +17,7 @@ import javax.validation.Valid;
 import java.util.List;
 
 @RestController
+@Api("userController相关api")
 public class GirlController {
 
     private final static Logger logger = LoggerFactory.getLogger(GirlController.class);
@@ -37,6 +39,12 @@ public class GirlController {
      */
     //spring-jpa 操作数据库非常简单，不用写sql语句
     @GetMapping(value = "/girls")
+    @ApiOperation("获取所有女生列表")
+    @ApiImplicitParams({})
+    @ApiResponses({
+            @ApiResponse(code=400,message="请求参数没填好"),
+            @ApiResponse(code=404,message="请求路径没有或页面跳转路径不对")
+    })
     public List<Girl> girlList(){
         logger.info("girlList");
         return girlRepository.findAll();
