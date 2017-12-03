@@ -46,7 +46,15 @@ public class GirlService {
 
 
         //业务：age判断之后的一系列的操作：如果>16岁，加钱。。
+    }
 
+    /**
+     * 通过id查询一个女生信息。单元测试用的
+     * @param id
+     * @return
+     */
+    public Girl findOne(Integer id){
+        return girlRepository.findOne(id);
     }
 
 

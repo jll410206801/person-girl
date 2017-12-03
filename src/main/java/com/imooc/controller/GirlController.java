@@ -82,7 +82,7 @@ public class GirlController {
 
     //删除
     @DeleteMapping(value = "/girls/{id}")
-    public void firlDelete(@PathVariable("id") Integer id){
+    public void girlDelete(@PathVariable("id") Integer id){
         girlRepository.delete(id);
     }
 
@@ -104,6 +104,7 @@ public class GirlController {
     public void getAge(@PathVariable("id") Integer id) throws Exception{
         girlService.getAge(id);
     }
+
 
 
 }
