@@ -55,8 +55,7 @@ public class HttpAspect {
     //这里获取返回的内容
     @AfterReturning(returning = "object" , pointcut = "log()")  //returning里面的内容就是入参:object
     public void doAfterReturning(Object object){  //因为不知道传什么，这里写Object
-
-        logger.info("response={}",object.toString());
+        logger.info("response={}",object.toString());  //如果返回是null，这里会抛系统异常
     }
 
 }

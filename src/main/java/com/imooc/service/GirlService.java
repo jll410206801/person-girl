@@ -1,6 +1,8 @@
 package com.imooc.service;
 
 
+import com.imooc.enums.ResultEnum;
+import com.imooc.exception.GirlException;
 import com.imooc.repository.GirlRepository;
 import com.imooc.domain.Girl;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -28,6 +30,26 @@ public class GirlService {
         girlRepository.save(girlB);
 
     }
+
+    //service里面处理逻辑，如果验证不通过就抛异常，抛给controller
+    public void getAge(Integer id) throws Exception{
+        Girl girl = girlRepository.findOne(id);
+        Integer age = girl.getAge();
+        if(age < 10){
+            //返回你还在上小学 code=100  这里要区分100还是101，这个不好写，所以自己实现一个exception
+            //还有个问题：code和message没有地方维护，想咋写就咋写。。这里需要统一管理，这里用到枚举
+            throw new GirlException(ResultEnum.PRIMARY_SCHOOL);
+        }else if(age > 10 && age < 24){
+            //返回上初中 code=101
+            throw new GirlException(ResultEnum.MIDDLE_SCHOOL);
+        }
+
+
+        //业务：age判断之后的一系列的操作：如果>16岁，加钱。。
+
+    }
+
+
 
 
 }

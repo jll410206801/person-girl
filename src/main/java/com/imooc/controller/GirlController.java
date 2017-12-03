@@ -1,10 +1,11 @@
 package com.imooc.controller;
 
 
-import com.imooc.aspect.HttpAspect;
+import com.imooc.domain.Result;
 import com.imooc.repository.GirlRepository;
 import com.imooc.service.GirlService;
 import com.imooc.domain.Girl;
+import com.imooc.utils.ResultUtil;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -39,6 +40,7 @@ public class GirlController {
     public List<Girl> girlList(){
         logger.info("girlList");
         return girlRepository.findAll();
+//        return null;
     }
 
     /**
@@ -47,16 +49,13 @@ public class GirlController {
      * @return
      */
     @PostMapping(value = "/girls")
-    public Girl girlAdd(@Valid Girl girl, BindingResult bindingResult) { //验证结果返回给bindingResult
+    public Result<Girl> girlAdd(@Valid Girl girl, BindingResult bindingResult) { //验证结果返回给bindingResult
         if(bindingResult.hasErrors()){
-            System.out.println(bindingResult.getFieldError().getDefaultMessage());
-            return null;
+            return ResultUtil.error(1,bindingResult.getFieldError().getDefaultMessage());
         }
         girl.setCupSize(girl.getCupSize());
         girl.setAge(girl.getAge());
-
-        return  girlRepository.save(girl);  //返回的是添加的对象
-
+        return ResultUtil.success(girlRepository.save(girl));
     }
 
     //通过id查询一个女生
@@ -98,6 +97,12 @@ public class GirlController {
     @PostMapping(value = "/girls/two")
     public void girlTwo(){
         girlService.insertTwo();
+    }
+
+    @GetMapping(value = "/girls/getAge/{id}")
+    //controller把service来的异常抛给ExceptionHandle。。这样的话对异常处理的逻辑就都放在ExceptionHandle里统一处理了。
+    public void getAge(@PathVariable("id") Integer id) throws Exception{
+        girlService.getAge(id);
     }
 
 
