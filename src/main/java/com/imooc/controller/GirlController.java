@@ -52,7 +52,7 @@ public class GirlController {
     }
 
     /**
-     * 增加一个女生
+     * 添加一个女生
      * @param girl
      * @return
      */

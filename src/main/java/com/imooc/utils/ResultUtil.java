@@ -2,6 +2,9 @@ package com.imooc.utils;
 
 import com.imooc.domain.Result;
 
+/**
+ * 工具类
+ */
 public class ResultUtil {
 
     public static Result success(Object object){
