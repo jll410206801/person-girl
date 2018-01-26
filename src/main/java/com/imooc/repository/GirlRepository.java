@@ -5,7 +5,7 @@ import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.List;
 
-public interface GirlRepository extends JpaRepository<Girl,Integer>{  //Integer是id的类型
+public interface GirlRepository extends JpaRepository<Girl,Integer>{  //类名加上id的类型....id是int型
 
 
     //通过年龄来查询

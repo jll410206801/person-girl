@@ -6,7 +6,9 @@ import org.springframework.web.bind.annotation.*;
 
 /**
  *启动应用的方式很多
- * IDEA 2、项目文件下，执行mvn spring-boot:run
+ * 1、IDEA run
+ * 2、项目文件下，执行mvn spring-boot:run
+ * 3、进到项目目录：先编译，然后运行java -jar 项目jar包名
  */
 
 @RestController
